@@ -19,17 +19,30 @@
     <p>Just replace the a, b, and c and perform the calculations.</p>
     <label for="aquad">a: </label><input type="text" id="aquad" size="1"> <label for="bquad">b: </label><input type="text" id="bquad" size="1"> <label for="cquad">c: </label><input type="text" id="cquad" size="1"> <button type="button" id="qe">Find the roots!</button><br>
     <p id='res'></p>
-    <h3>Sum of the arithmetic sequences</h3>
+    <h3>Finding the nth place of an arithmetic sequence</h3>
+    <p>Provide the <em>a&#8321;</em>, <em>n</em>, and <em>d</em>.</p>
+    <label for="as">a&#8321;: </label><input type="text" id="as" size="1"> <label for="asn">n: </label><input type="text" id="asn" size="1"> <label for="d1">d: </label><input type="text" id="d1" size="1"><button type="button" id="place">Find the nth place!</button>
+    <p id="res1"></p>
+    <h3>Finding the nth place of an geometric sequence</h3>
+    <p>Provide the <em>a&#8321;</em>, <em>a&#8322;</em>, and <em>n</em>.</p>
+    <p>You get the ratio by dividing any term that is placed greater than the first term by the term preceding it.</p>
+    <label for="as1">a&#8321;: </label><input type="text" id="as1" size="1"> <label for="asn1">a&#8322;: </label><input type="text" id="asn1" size="1"> <label for="d2">n: </label><input type="text" id="d2" size="1"><button type="button" id="geoplace">Find the nth place!</button>
+    <p id="res2"></p>
+    <h3>Sum of the arithmetic sequence</h3>
     <p>Provide the <em>a&#8321;</em>, <em>n</em>, and <em>d</em>.</p>
     <label for="asub">a&#8321;: </label><input type="text" id="asub" size="1"> <label for="n">n: </label><input type="text" id="n" size="1"> <label for="d">d: </label><input type="text" id="d" size="1"><button type="button" id="sum">Find the sum!</button><br>
     <p id="res4"></p><br>
     <p>Provide the <em>a&#8321;</em>, <em>a&#8322;</em>, and <em>n</em>.</p>
     <label for="asub1">a&#8321;: </label><input type="text" id="asub1" size="1"> <label for="asub2">a&#8322;: </label><input type="text" id="asub2" size="1"> <label for="n1">n: </label><input type="text" id="n1" size="1"><button type="button" id="sum1">Find the sum!</button><br>
     <p id="res5"></p>
-    <h3>Sum of the geometric sequences</h3>
+    <h3>Sum of the geometric sequence</h3>
     <p>Provide the <em>a&#8321;</em>, <em>r</em>, and <em>n</em>.</p>
     <label for="asub3">a&#8321;: </label><input type="text" id="asub3" size="1"> <label for="r">r: </label><input type="text" id="r" size="1"> <label for="n2">n: </label><input type="text" id="n2" size="1"><button type="button" id="sum2">Find the sum!</button><br>
     <p id="res6"></p>
+    <h3>Arithmetic means</h3>
+    <p>Provide the <em>a&#8321;</em>, <em>a&#8345;</em>, <em>n</em>.</p>
+    <label for="asub6">a&#8321;: </label><input type="text" id="asub6" size="1"> <label for="asub7">a&#8345;: </label><input type="text" id="asub7" size="1"> <label for="n4">n: </label><input type="text" id="n4" size="1"><button type="button" id="mean">Find the means!</button><br>
+    <p id="res9"></p>   
     <h3>Geometric means</h3>
     <p>Provide the <em>a&#8321;</em>, <em>a&#8345;</em>, <em>n</em>.</p>
     <label for="asub4">a&#8321;: </label><input type="text" id="asub4" size="1"> <label for="asub5">a&#8345;: </label><input type="text" id="asub5" size="1"> <label for="n3">n: </label><input type="text" id="n3" size="1"><button type="button" id="means">Find the means!</button><br>
@@ -39,7 +52,7 @@
     <h2>3n + 1</h2>
     <p>Named the Collatz conjecture, it's a weird mathematical problem. If <em>n</em> is odd, we multiply it by 3 and add 1 onto it and if it's even you divide it to 2. When you reach 1 it loops from 4 to 1 endlessly.</p>
     <label for="coll">n: </label><input type="text" id="coll" size="1"> <button type="button" id="collatz">enter</button>
-    <p id="res6"></p>
+    <p id="res8"></p>
     <script src="./scripts/math.js"></script>
     <script>
         let audio = document.getElementById('hehe');

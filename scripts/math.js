@@ -1,3 +1,5 @@
+function nth(n){return["st","nd","rd"][(((n<0?-n:n)+90)%100-10)%10-1]||"th"}
+
 document.getElementById('qe').onclick = async function() {
     const a = Number(document.getElementById('aquad').value)
     const b = Number(document.getElementById('bquad').value) * -1
@@ -156,6 +158,71 @@ document.getElementById('sum2').onclick = () => {
     return document.getElementById("res6").innerHTML = `The sum of the geometric sequence is <b>${ans}</b><br>Solution:<br>${s[0]}<br>${s[1]}<br>${s[2]}<br>${s[3]}<br><b>${ans}</b>`
 }
 
+document.getElementById('place').onclick = () => {
+    const asub = Number(document.getElementById("as").value);
+    const n = Number(document.getElementById("asn").value);
+    const d = Number(document.getElementById("d1").value);
+
+    if(isNaN(asub) || isNaN(n) || isNaN(d) || Boolean(asub) === false || Boolean(n) === false || Boolean(d) === false) return document.getElementById('res1').innerHTML = 'Input a valid number!';
+
+    let ans = asub + ((n - 1) * d);
+    let s = [];
+
+    s.push(`${asub} + (${n} - 1) ${d}`)
+    s.push(`${asub} + (${n - 1}) ${d}`)
+    s.push(`${asub} + ${(n - 1) * d}`)
+
+    return document.getElementById('res1').innerHTML = `The ${n + nth(n)} place in the sequence is <b>${ans}</b>.<br>Solution:<br><b>${s[0]}</b><br> <b>${s[1]}</b><br> <b>${s[2]}</b><br> <b>${ans}</b>`
+}
+
+document.getElementById('geoplace').onclick = () => {
+    const asub = Number(document.getElementById("as1").value);
+    const asub1 = Number(document.getElementById("asn1").value);
+    const n = Number(document.getElementById("d2").value);
+
+    if(isNaN(asub) || isNaN(asub1) || isNaN(n) || Boolean(asub) === false || Boolean(asub1) === false || Boolean(n) === false) return document.getElementById('res2').innerHTML = 'Input a valid number!';
+
+    let ans = asub * ((asub1 / asub) ** n - 1);
+    let s = [];
+
+    s.push(`${asub} (${asub1 / asub}^${n} - 1)`);
+    s.push(`${asub} (${asub1 / asub}^${n - 1})`);
+    s.push(`${asub} (${(asub1 / asub) ** n - 1})`);
+
+    return document.getElementById('res2').innerHTML = `The ${n + nth(n)} place in the sequence is <b>${ans}</b>.<br>Solution:<br><b>${s[0]}</b><br> <b>${s[1]}</b><br> <b>${s[2]}</b><br> <b>${ans}</b>`
+}
+
+document.getElementById("mean").onclick = () => {
+    const asub = Number(document.getElementById("asub6").value);
+    const asubn = Number(document.getElementById("asub7").value);
+    const n = Number(document.getElementById("n4").value);
+
+    if(isNaN(asub) || isNaN(asubn) || isNaN(n) || Boolean(asub) === false || Boolean(asubn) === false || Boolean(n) === false) return document.getElementById('res9').innerHTML = 'Input a valid number!';
+
+    const d = Math.round(10000 * (asubn - asub) / (n - 1)) / 10000
+    let sol = [];
+    let string = "";
+
+    let sub = 2;
+    function sequence(x, y){
+        if(x + y < asubn){
+            sol.push([
+                `a sub ${sub} = ${x} + ${y}`,
+                `a sub ${sub} = ${x + y}`
+            ]);
+            sub++;
+            sequence(x + y, y);
+        }
+    }
+    sequence(asub, d);
+
+    for(let i = 0; i < sol.length; i++){
+        string = string + `<br>${sol[i][0]}<br>${sol[i][1]}<br>`;
+    }
+
+    return document.getElementById("res9").innerHTML = `The difference is </b>${d}<b>.<br>Solution:${string}`;
+}
+
 document.getElementById("means").onclick = () => {
     const asub = Number(document.getElementById("asub4").value);
     const asubn = Number(document.getElementById("asub5").value);
@@ -163,16 +230,13 @@ document.getElementById("means").onclick = () => {
 
     if(isNaN(asub) || isNaN(asubn) || isNaN(n) || Boolean(asub) === false || Boolean(asubn) === false || Boolean(n) === false) return document.getElementById('res7').innerHTML = 'Input a valid number!';
 
-    //const ratio = Math.sqrt(asubn, 1/n - 1) / Math.pow(asub, 1/n - 1);
     const ratio = Math.round(10000 * (asubn ** (1 / (n - 1))) / (asub ** (1 / (n - 1)))) / 10000
-    let ans = [];
     let sol = [];
-    let string = '';
+    let string = "";
 
     let sub = 2;
     function sequence(x, y){
         if(x * y < asubn){
-            ans.push(x * y);
             sol.push([
                 `a sub ${sub} = ${x} (${y})`,
                 `a sub ${sub} = ${x * y}`
@@ -181,14 +245,13 @@ document.getElementById("means").onclick = () => {
             sequence(x * y, y);
         }
     }
-    let res = sequence(asub, ratio);
-    console.log(res);
-    if(res === 0) return document.getElementById("res7").innerHTML = `${ans[ans.length - 1] * ratio} multiplied by ${ratio} is not equals to your a sub ${sub + 1}.`;
+    sequence(asub, ratio);
 
-    for(let i = 0; i < ans.length; i++){
+    for(let i = 0; i < sol.length; i++){
         string = string + `<br>${sol[i][0]}<br>${sol[i][1]}<br>`;
     }
 
     return document.getElementById("res7").innerHTML = `The common ratio is </b>${ratio}<b>.<br>Solution:${string}`;
 }
-document.getElementById('collatz').onclick = () => { let n = Number(document.getElementById('coll').value); if(n === 1 || n === 0 || isNaN(n) || Boolean(document.getElementById('coll').value) === false) return; b = []; for(n; n > 1;){ if(n % 2 !== 0){ n = n * 3 + 1; b.push(n); } else { n = n / 2; b.push(n); }; }; return document.getElementById('res6').innerHTML = `<b>${b.join(', ')}</b><br>This took ${b.length} ${b.length > 1 ? 'steps' : 'step'}.` };
+
+document.getElementById('collatz').onclick = () => { let n = Number(document.getElementById('coll').value); if(n === 1 || n === 0 || isNaN(n) || Boolean(document.getElementById('coll').value) === false) return; b = []; for(n; n > 1;){ if(n % 2 !== 0){ n = n * 3 + 1; b.push(n); } else { n = n / 2; b.push(n); }; }; return document.getElementById('res8').innerHTML = `<b>${b.join(', ')}</b><br>This took ${b.length} ${b.length > 1 ? 'steps' : 'step'}.` };
