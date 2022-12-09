@@ -187,7 +187,7 @@ document.getElementById('geoplace').onclick = () => {
 
     s.push(`${asub} (${asub1 / asub}^${n} - 1)`);
     s.push(`${asub} (${asub1 / asub}^${n - 1})`);
-    s.push(`${asub} (${(asub1 / asub) ** n - 1})`);
+    s.push(`${asub} (${(asub1 / asub) ** (n - 1)})`);
 
     return document.getElementById('res2').innerHTML = `The ${n + nth(n)} place in the sequence is <b>${ans}</b>.<br>Solution:<br><b>${s[0]}</b><br> <b>${s[1]}</b><br> <b>${s[2]}</b><br> <b>${ans}</b>`
 }
