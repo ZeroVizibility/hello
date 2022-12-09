@@ -182,7 +182,7 @@ document.getElementById('geoplace').onclick = () => {
 
     if(isNaN(asub) || isNaN(asub1) || isNaN(n) || Boolean(asub) === false || Boolean(asub1) === false || Boolean(n) === false) return document.getElementById('res2').innerHTML = 'Input a valid number!';
 
-    let ans = asub * ((asub1 / asub) ** n - 1);
+    let ans = asub * ((asub1 / asub) ** (n - 1));
     let s = [];
 
     s.push(`${asub} (${asub1 / asub}^${n} - 1)`);
